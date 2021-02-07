@@ -4,7 +4,7 @@ const searchValue = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
 
-messageOne.textContent = 'Loading...'
+messageOne.textContent = ''
 messageTwo.textContent = ''
 
 weatherForm.addEventListener('submit', (e) => {
@@ -14,6 +14,7 @@ weatherForm.addEventListener('submit', (e) => {
     const location = searchValue.value
 
     fetch('/weather?location=' + location).then((response) => {
+        messageOne.textContent = 'Loading...'
         response.json().then((data) => {
             if(data.error) {
                 console.log(data.error)
